@@ -67,3 +67,10 @@ cx.fill()
 */
 
 // curves
+
+
+cx.beginPath()
+cx.moveTo(Math.hypot(20, 30), Math.hypot(30, 40))
+cx.lineTo(Math.hypot(20, 30), Math.hypot(30, 40))
+cx.lineTo(Math.hypot(40, 50), Math.hypot(60, 70))
+cx.stroke()
