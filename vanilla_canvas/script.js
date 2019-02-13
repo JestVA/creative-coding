@@ -67,10 +67,11 @@ cx.fill()
 */
 
 // curves
-
-
+// vreau sa desenez ceva algoritmic
+let n = () => Math.floor(Math.random() * 500)
 cx.beginPath()
-cx.moveTo(Math.hypot(20, 30), Math.hypot(30, 40))
-cx.lineTo(Math.hypot(20, 30), Math.hypot(30, 40))
-cx.lineTo(Math.hypot(40, 50), Math.hypot(60, 70))
+cx.moveTo(n(), n())
+cx.lineTo(n(), n())
+cx.moveTo(n(), n())
+cx.lineTo(n(), n())
 cx.stroke()
