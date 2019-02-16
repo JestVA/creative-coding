@@ -67,11 +67,18 @@ cx.fill()
 */
 
 // curves
+
+/*
 // vreau sa desenez ceva algoritmic
+// This turned out to be a study of drawn lines
+// and randomness, order, patterns and meaning 
 let n = () => Math.floor(Math.random() * 500)
 cx.beginPath()
+cx.strokeStyle = 'grey'
 cx.moveTo(n(), n())
 cx.lineTo(n(), n())
 cx.moveTo(n(), n())
 cx.lineTo(n(), n())
-cx.stroke()
+cx.moveTo(n(), n())
+cx.lineTo(n(), n())
+*/
