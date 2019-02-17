@@ -4,20 +4,11 @@ const canvas = document.querySelector("canvas");
 const cx = canvas.getContext("2d");
 
 // General setting (width, height)
-const dimensions = { canvas_width: 500, canvas_height: 500 };
+const dimensions = [500, 500];
 
 // Create attributes and set the size from the dimensions array
-const { canvas_width, canvas_height } = dimensions
-canvas.setAttribute('width', canvas_width);
-canvas.setAttribute('height', canvas_height);
-
-
-// const canvas_width = canvas.setAttribute("width", dimensions[0]);
-// const canvas_height = canvas.setAttribute("height", dimensions[1]);
-
-
-
-
+const canvas_width = canvas.setAttribute("width", dimensions[0]);
+const canvas_height = canvas.setAttribute("height", dimensions[1]);
 
 // Start drawing 
 // fillStyle is a property of the context object
