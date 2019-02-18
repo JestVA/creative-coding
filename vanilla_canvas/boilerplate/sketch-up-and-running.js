@@ -16,6 +16,7 @@ use destructuring to set implicit values.
 */
 
 // And finally, in an imperative style, we make the pixel a reality.
-$c.setAttribute('width', $c_width);
-$c.setAttribute('height', $c_height);
+$c.setAttribute('width', $c_width)
+$c.setAttribute('height', $c_height)
+
 
