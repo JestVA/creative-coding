@@ -58,3 +58,17 @@ const hotpo = (n, acc = 0) => {
     }
   }
 
+// A good example of a while loop that does not break your laptop
+var hotpo = function(n){
+    var rs=0;
+    while (n>1){
+      rs++;
+      n=n%2?n*3+1:n/2;
+    }
+    return rs;
+}
+
+// And the one line hipster 
+const hotpo = n => n === 1 ? 0 : 1 + hotpo(n % 2 ? (n * 3 + 1) : n / 2);
+
+
