@@ -1,27 +1,30 @@
 // https://en.wikipedia.org/wiki/Collatz_conjecture
 
 const hotpo = n => {
-    debugger;    
-    let counter = 0
         let steps = 0;
         if (n === 0 || n === 1) {
           return steps = 0
         }
         
-        
 
-        n % 2 === 0 ? numberIsEven(n) : numberIsOdd(n)
+        if (n > 1) {
+            n % 2 === 0 ? numberIsEven(n) : numberIsOdd(n)
+        }
         
         function numberIsEven(n) {
             n = n / 2
             steps++
-            n % 2 === 0 ? numberIsEven(n) : numberIsOdd(n)
+            if (n > 1) {
+                n % 2 === 0 ? numberIsEven(n) : numberIsOdd(n)
+            }
         }
         
         function numberIsOdd(n) {
             n = 3 * n + 1
             steps++
-            n % 2 === 0 ? numberIsEven(n) : numberIsOdd(n)
+            if (n > 1) {
+                n % 2 === 0 ? numberIsEven(n) : numberIsOdd(n)
+            }
         }
 
         return steps
