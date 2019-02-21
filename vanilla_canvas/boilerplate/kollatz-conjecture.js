@@ -7,6 +7,11 @@ const hotpo = n => {
       return steps = 0
     }
 
+    // This is getting closer
+    // I think I need to create a new function here, 
+    // which will have closure over the state variable 
+    // in either counter or steps
+    
     if (n % 2 === 0) {
         n /= 2
         steps += 1
