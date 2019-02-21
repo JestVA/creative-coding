@@ -1,25 +1,30 @@
 // https://en.wikipedia.org/wiki/Collatz_conjecture
 
 const hotpo = n => {
+    debugger;    
     let counter = 0
-    let steps = 0;
-    if (n === 0 || n === 1) {
-      return steps = 0
-    }
+        let steps = 0;
+        if (n === 0 || n === 1) {
+          return steps = 0
+        }
+        
+        
 
-    // This is getting closer
-    // I think I need to create a new function here, 
-    // which will have closure over the state variable 
-    // in either counter or steps
-    
-    if (n % 2 === 0) {
-        n /= 2
-        steps += 1
-        n > 1 ? hotpo(n) : steps
-    }
+        n % 2 === 0 ? numberIsEven(n) : numberIsOdd(n)
+        
+        function numberIsEven(n) {
+            n = n / 2
+            steps++
+            n % 2 === 0 ? numberIsEven(n) : numberIsOdd(n)
+        }
+        
+        function numberIsOdd(n) {
+            n = 3 * n + 1
+            steps++
+            n % 2 === 0 ? numberIsEven(n) : numberIsOdd(n)
+        }
 
-
-    return steps
+        return steps
 }
 
     /*
