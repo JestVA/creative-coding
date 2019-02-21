@@ -1,10 +1,25 @@
 // https://en.wikipedia.org/wiki/Collatz_conjecture
 
 const hotpo = n => {
-    let steps;
+    let steps = 0;
     if (n === 0 || n === 1) {
       return steps = 0
     }
+
+    if (n % 2 === 0) {
+        n /= 2
+        steps += 1
+        hotpo(n)
+    }
+
+
+    return steps
+
+
+
+
+
+
   
   
   
@@ -16,4 +31,4 @@ const hotpo = n => {
   // Remove all trailing "0"s (i.e. repeatedly divide by two until the result is odd).
   
   
-  }
+}
