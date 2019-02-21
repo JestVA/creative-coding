@@ -1,4 +1,15 @@
 // https://en.wikipedia.org/wiki/Collatz_conjecture
+// Refactored
+const hotpo = (n, steps = 0) => {
+    const numberIsEven = n => {
+        return hotpo(n / 2, steps + 1)
+    }
+    const numberIsOdd = n => {
+        return hotpo(3 * n + 1, steps + 1)
+    }
+    return (n === 0 || n === 1) ? steps :
+    (n % 2 === 0) ? numberIsEven(n) : numberIsOdd(n)
+}
 
 // const hotpo = n => {
 //         let steps = 0;
@@ -47,15 +58,3 @@ const hotpo = (n, acc = 0) => {
     }
   }
 
-// How do I refactor my code better?  
-
-const hotpo = (n, steps = 0) => {
-    const numberIsEven = n => {
-        return hotpo(n / 2, steps + 1)
-    }
-    const numberIsOdd = n => {
-        return hotpo(3 * n + 1, steps + 1)
-    }
-    return (n === 0 || n === 1) ? steps :
-    (n % 2 === 0) ? numberIsEven(n) : numberIsOdd(n)
-}
