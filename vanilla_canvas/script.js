@@ -2,7 +2,7 @@
 // cx receives a context object containing methods to interface drawing
 const canvas = document.querySelector("canvas");
 const cx = canvas.getContext("2d");
-
+console.log(cx)
 // General setting (width, height)
 const dimensions = [500, 500];
 
@@ -13,18 +13,18 @@ const canvas_height = canvas.setAttribute("height", dimensions[1]);
 // Start drawing 
 // fillStyle is a property of the context object
 
-/*
+
 cx.fillStyle = "orange";
-*/
+
 
 // 100 pixels wide, 50 pixels high
 // top-left coordinates at (10, 10)
 // (0, 0) is always top-left corner
 // fillRect() is a method of the context object
 
-/*
+
 cx.fillRect(10, 10, 100, 50)
-*/
+
 
 // lines and surfaces
 
