@@ -1,0 +1,39 @@
+{
+  "name": "javascript-art",
+  "version": "2.0.0",
+  "description": "Explorations",
+  "main": "ndist/app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JestVA/creative-coding.git"
+  },
+  "keywords": [
+    "generative",
+    "art",
+    "javascript",
+    "art",
+    "canvas",
+    "api",
+    "context",
+    "devfrend"
+  ],
+  "author": "devfrend",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JestVA/creative-coding/issues"
+  },
+  "homepage": "https://github.com/JestVA/creative-coding#readme"
+}
