@@ -1,4 +1,4 @@
-const mapper = color => 
+const mapper = palette => palette.map(color => 
 {
 	let newColor = '';
 	const notDigit = /[^0-9]/;
@@ -15,6 +15,6 @@ const mapper = color =>
 	});
 
 	return newColor;
-}
+});
 
 export default mapper;

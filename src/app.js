@@ -1,21 +1,23 @@
-import canvas from './lib/canvas';
-import mapper from './utils/mapper';
+import Canvas from './lib/canvas';
+import palette from './lib/palette';
 
-const Canvas = canvas(document.getElementById("generative"), 800, 800);
+import seedrandom from 'seedrandom';
+import arraySuffle from 'array-shuffle';
+import { hex } from 'wcag-contrast';
+import SimplexNoise from 'simplex-noise';
 
-console.log(Canvas)
-// todos add more starter packages
+const myFirstCanvas = new Canvas(document.getElementById("generative"), 800, 800);
+
+
+console.log(myFirstCanvas);
+
+
+
+
+
+
 // run AJs functions to see what his outputs were like
 // try to compose a similar function myself
-
-const palette = require('./lib/palette.json');
-
-
-
-const mapPalette = palette.map(p => p.map(mapper));
-
-
-
  
-console.log(mapPalette)
+
 
