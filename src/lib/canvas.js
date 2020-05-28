@@ -24,6 +24,7 @@ class Canvas {
 
 	set newHeight(newHeight)
 	{
+		console.log(newHeight, 'new height');
 		this.domElement.setAttribute('height', newHeight);
 	}
 
