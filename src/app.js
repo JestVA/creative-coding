@@ -70,7 +70,7 @@ const drawPalette = () =>
 			ctx.fillRect(tile_x, 0, tile_w, tile_h);
 		});
 
-		ctx.fillStyle = palette[hex(palette, palette[0])];
+		ctx.fillStyle = palette[bestContrast(palette, palette[0])];
 		ctx.fillRect(0, (0.5 * tile_h) - (0.5 * tile_w), palette_w - padding, tile_w);
 
 		ctx.restore();

@@ -4,3 +4,5 @@
 ### https://www.instagram.com/devfrend/
 
 Explorations of the soul through Javascript
+
+![](./experiments/palette.png)
