@@ -6,7 +6,7 @@ import arraySuffle from 'array-shuffle';
 import SimplexNoise from 'simplex-noise';
 
 
-const myFirstCanvas = new Canvas(document.getElementById("generative"), 1600, 1600);
+const myFirstCanvas = new Canvas(document.getElementById("generative"), 1200, 1200);
 
 const init = () => {
 	window._myFirstCanvas = myFirstCanvas;
@@ -79,22 +79,89 @@ const drawPalette = () =>
 }
 
 
+const drawLines = (seed =  Math.floor(Math.random() * Math.pow(2, 20)))=>
+{
+	console.log(seedrandom);
 
-console.log(myFirstCanvas);
+	const mistyVariable = new SimplexNoise(seed);
 
-myFirstCanvas.canvasHeight
-myFirstCanvas.canvasWidth
+	myFirstCanvas.newHeight = 350 * 2;
+
+	myFirstCanvas.domElement.style.height = (myFirstCanvas.canvasHeight / 2) + "px";
+
+	const ctx = myFirstCanvas.context;
+
+	const palette = arraySuffle(palettes)[0];
+
+	const bg = palette[0];
+
+	const lineColour = palette[bestContrast(palette, bg)];
+
+	console.log(palette, bg, lineColour);
+
+	const padding = 90;
+	const segments = 300;
+	const height = myFirstCanvas.canvasHeight;
+	const width = myFirstCanvas.canvasWidth;
+
+	const yGap = height / segments;
+	const currentLine = 0;
+
+	ctx.fillStyle = bg;
+	ctx.fillRect(0, 0, width, height);
+
+	const drawSingleLine = xCoord => 
+	{
+		ctx.strokeStyle = lineColour;
+		ctx.lineWidth = 2;
+		ctx.save();
+
+		let currentY = 0;
+
+		ctx.translate(xCoord, currentY);
+
+		let x = 0;
+
+		ctx.globalAlpha = Math.random() // a number in 0 - 1 range
+
+		ctx.beginPath();
+		ctx.moveTo(x, currentY);
+
+		for(let y = 1; y <= segments; y++)
+		{
+			const simplexNoise = mistyVariable.noise2D(xCoord, y);
+			currentY = y * yGap + (simplexNoise * 10);
+			const currentX = x + (simplexNoise * 5);
+			ctx.lineTo(currentX, currentY);
+		}
+
+		ctx.stroke();
+		ctx.restore();
+
+	}
+
+	for(let x = 0; x < width / padding; x++)
+	{
+		drawSingleLine(x * padding);
+	}
+
+}
 
 
-console.log(myFirstCanvas.context)
 
 
-console.log(myFirstCanvas)
-const draw = { palette: drawPalette };
+
+
+const draw = 
+{ 
+	palette: drawPalette, 
+	lines: drawLines
+};
+
 window.draw = draw;
 
 init();
-// drawPalette;
+
 
 
 
