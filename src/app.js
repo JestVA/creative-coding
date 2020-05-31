@@ -6,7 +6,7 @@ import arraySuffle from 'array-shuffle';
 import SimplexNoise from 'simplex-noise';
 
 
-const myFirstCanvas = new Canvas(document.getElementById("generative"), 1200, 1200);
+const myFirstCanvas = new Canvas(document.getElementById("generative"), 800, 800);
 
 const init = () => {
 	window._myFirstCanvas = myFirstCanvas;
@@ -81,11 +81,11 @@ const drawPalette = () =>
 
 const drawLines = (seed =  Math.floor(Math.random() * Math.pow(2, 20)))=>
 {
-	console.log(seedrandom);
+	
 
 	const mistyVariable = new SimplexNoise(seed);
 
-	myFirstCanvas.newHeight = 350 * 2;
+	myFirstCanvas.newHeight = 550 * 2;
 
 	myFirstCanvas.domElement.style.height = (myFirstCanvas.canvasHeight / 2) + "px";
 
@@ -97,10 +97,10 @@ const drawLines = (seed =  Math.floor(Math.random() * Math.pow(2, 20)))=>
 
 	const lineColour = palette[bestContrast(palette, bg)];
 
-	console.log(palette, bg, lineColour);
 
-	const padding = 90;
-	const segments = 300;
+
+	const padding = 9;
+	const segments = 30;
 	const height = myFirstCanvas.canvasHeight;
 	const width = myFirstCanvas.canvasWidth;
 
@@ -113,7 +113,7 @@ const drawLines = (seed =  Math.floor(Math.random() * Math.pow(2, 20)))=>
 	const drawSingleLine = xCoord => 
 	{
 		ctx.strokeStyle = lineColour;
-		ctx.lineWidth = 2;
+		ctx.lineWidth = 40;
 		ctx.save();
 
 		let currentY = 0;
@@ -144,6 +144,19 @@ const drawLines = (seed =  Math.floor(Math.random() * Math.pow(2, 20)))=>
 	{
 		drawSingleLine(x * padding);
 	}
+
+	ctx.save();
+	const txt = `#${seed}`;
+	ctx.font = 'Garamond Monotype';
+	const txtWidth = ctx.measureText(txt).width;
+	const txtHeight = parseInt(ctx.font);
+
+	ctx.fillStyle = bg;
+	ctx.fillRect(5, (height - txtHeight - 10), txtWidth + 10, txtHeight + 2);
+	ctx.fillStyle = lineColour;
+	ctx.textBaseline = 'bottom';
+	ctx.fillText(txt, 10, height - (1.5 * txtHeight));
+	ctx.restore();
 
 }
 
