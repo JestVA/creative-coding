@@ -1,6 +1,9 @@
 class Canvas {
-	constructor(domElement, height, width)
+	constructor(domElement, height = 400, width = 400)
 	{
+		if(typeof domElement === 'undefined')
+			throw new Error('MissingCanvas');
+
 		this.domElement = domElement;
 		this.domElement.setAttribute('height', height);
 		this.domElement.setAttribute('width', width);
