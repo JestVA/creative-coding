@@ -6,7 +6,7 @@
 Explorations of the soul through Javascript
 
 ![](./experiments/palette.png)
-### Line study with noise and entropy
+### Line study with seeded simplex noise
 ![](./experiments/line-1.png)
 ![](./experiments/line-4.png)
 ![](./experiments/line-2.png)
