@@ -5,10 +5,10 @@
 
 Explorations of the soul through Javascript
 
-![](./experiments/palette.png)
+![](./github-gallery/palette.png)
 ### Line study with seeded simplex noise
-![](./experiments/line-1.png)
-![](./experiments/line-4.png)
-![](./experiments/line-2.png)
-![](./experiments/line-5.png)
-![](./experiments/line-3.png)
+![](./github-gallery/line-1.png)
+![](./github-gallery/line-4.png)
+![](./github-gallery/line-2.png)
+![](./github-gallery/line-5.png)
+![](./github-gallery/line-3.png)

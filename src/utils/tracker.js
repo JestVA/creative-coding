@@ -2,7 +2,7 @@
 //let x = [0, 1, 0, 1, 2, 1];
 
 export function tracker(tickers = []) {
-	let string = x.join("");
+	let string = tickers.join("");
 	let isPeak = false;
 	const pos = [];
 	const peaks = [];
