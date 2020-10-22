@@ -5,7 +5,7 @@ import RandomLines from './lib/randomLines';
 import CellularAutomata from "./lib/cellularAutomata";
 
 const canvas = new Canvas(
-	document.getElementById("generative"), 600, 600
+	document.getElementById("generative"), 1600, 1600
 );
 
 const init = () => {
@@ -16,9 +16,9 @@ const init = () => {
 
 	const paletteMap = new PaletteMap({ canvas, palettes });
 
-	const randomLines = new RandomLines({ canvas, palettes, segments: 72, padding: 12});
+	const randomLines = new RandomLines({ canvas, palettes, segments: 72, padding: 12 });
 
-	const cellularAutomata  = new CellularAutomata({ canvas, palettes });
+	const cellularAutomata  = new CellularAutomata({ canvas, palettes, max: 150 });
 
 	const draw = 
 	{

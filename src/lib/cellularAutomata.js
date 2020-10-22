@@ -6,6 +6,7 @@ class CellularAutomata {
 	
 	constructor(options)
 	{
+
 		const opts = options || {};
 
 		if(typeof opts.canvas === "undefined")
@@ -14,8 +15,17 @@ class CellularAutomata {
 			throw new Error("PalettesNotDefined");
 		
 		this.canvas = opts.canvas;
+
+		this.max = opts.max || 30;
+		
+		if(this.max > 10)
+		{
+			this.canvas.newHeight = 3600;
+			this.canvas.newWidth = 3600;
+		}
+
 		this.palettes = opts.palettes;
-		this.w = 10;
+		this.w = this.max;
 		this.cells = Array(Math.floor(this.canvas.canvasWidth / this.w));
 		  
 		for (let i = 0; i < this.cells.length; i++) {
@@ -25,7 +35,7 @@ class CellularAutomata {
 		this.cells[this.cells.length/2] = 1;
 
 		this.generation = 0;
-		this.ruleset = [0, 1, 0, 1, 1, 0, 1, 0];
+		this.ruleset = [1, 1, 1, 1, 1, 0, 1, 0];
 	}
 
 	//// Implementing the Wolfram rules
@@ -58,11 +68,15 @@ class CellularAutomata {
 		// The current generation is the new generation
 		this.cells = nextgen;
 		this.generation++;
+
+		// need this here to fill the whole area
+		this.draw();
 	}
 
-	// methods here
 	draw()
 	{
+		
+
 		const ctx = this.canvas.context;
 
 		for (let i = 0; i < this.cells.length; i++) {
@@ -72,16 +86,23 @@ class CellularAutomata {
 			
 			if (this.cells[i] === 1) {
 				ctx.fillStyle = bg;
+				ctx.fillRect(i * this.w, this.generation * this.w, this.w, this.w);
 			} else {
-				ctx.fillStyle = bg2;
+				ctx.fillStyle = "#fff";
 
 				ctx.fillRect(i * this.w, this.generation * this.w, this.w, this.w);
 			}
 		}
+
 		if (this.generation < this.canvas.canvasHeight/this.w) {
+			
 			this.generate();
 		}
+		
+		
 	}
+
+	
 
 }
 
