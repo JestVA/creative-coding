@@ -16,12 +16,12 @@ class CellularAutomata {
 		
 		this.canvas = opts.canvas;
 
-		this.max = opts.max || 30;
+		this.max = opts.max;
 		
 		if(this.max > 10)
 		{
-			this.canvas.newHeight = 3600;
-			this.canvas.newWidth = 3600;
+			this.canvas.newHeight = 60 * this.max / 3;
+			this.canvas.newWidth = 45 * this.max / 3;
 		}
 
 		this.palettes = opts.palettes;
@@ -35,7 +35,7 @@ class CellularAutomata {
 		this.cells[this.cells.length/2] = 1;
 
 		this.generation = 0;
-		this.ruleset = [1, 1, 1, 1, 1, 0, 1, 0];
+		this.ruleset = [1, 0, 1, 0, 0, 0, 0, 1];
 	}
 
 	//// Implementing the Wolfram rules
@@ -78,9 +78,10 @@ class CellularAutomata {
 		
 
 		const ctx = this.canvas.context;
+		const palette = arraySuffle(this.palettes)[0];
 
 		for (let i = 0; i < this.cells.length; i++) {
-			const palette = arraySuffle(this.palettes)[0];
+		
 			const bg = palette[0];
 			const bg2 = palette[1];
 			
@@ -88,8 +89,7 @@ class CellularAutomata {
 				ctx.fillStyle = bg;
 				ctx.fillRect(i * this.w, this.generation * this.w, this.w, this.w);
 			} else {
-				ctx.fillStyle = "#fff";
-
+				ctx.fillStyle = bg2;
 				ctx.fillRect(i * this.w, this.generation * this.w, this.w, this.w);
 			}
 		}

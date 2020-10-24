@@ -18,7 +18,7 @@ const init = () => {
 
 	const randomLines = new RandomLines({ canvas, palettes, segments: 72, padding: 12 });
 
-	const cellularAutomata  = new CellularAutomata({ canvas, palettes, max: 150 });
+	const cellularAutomata  = new CellularAutomata({ canvas, palettes, max: 50 });
 
 	const draw = 
 	{
