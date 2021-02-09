@@ -35,7 +35,7 @@ class CellularAutomata {
 		this.cells[this.cells.length/2] = 1;
 
 		this.generation = 0;
-		this.ruleset = [1, 0, 1, 0, 0, 0, 0, 1];
+		this.ruleset = [1, 1, 1, 1, 1, 1, 1, 1];
 	}
 
 	//// Implementing the Wolfram rules
@@ -98,6 +98,22 @@ class CellularAutomata {
 			
 			this.generate();
 		}
+
+		ctx.save();
+		const txt = `#${this.ruleset.join()}`;
+		ctx.font = '16px Courier';
+		const txtWidth = ctx.measureText(txt).width;
+		const txtHeight = parseInt(ctx.font);
+
+		// draw bg
+		ctx.fillStyle = palette[0];
+		ctx.fillRect(5, (this.canvas.canvasHeight - txtHeight - 10), 
+					txtWidth + 10, txtHeight + 2);
+		
+		ctx.fillStyle = palette[1];
+		ctx.textBaseline = 'top';
+		ctx.fillText(txt, 10, this.canvas.canvasHeight - (1.5 * txtHeight));
+		ctx.restore();
 		
 		
 	}
