@@ -66,8 +66,8 @@ class RandomLines {
 		
 		const simplex = new SimplexNoise(rng());
 
-		this.canvas.newHeight = 800 * 2;
-		this.canvas.domElement.style.height = (this.canvas.canvasHeight / 2) + "px";
+		//this.canvas.newHeight = 800 * 2;
+		//this.canvas.domElement.style.height = (this.canvas.canvasHeight / 2) + "px";
 
 		const ctx = this.canvas.context;
 		const palette = arraySuffle(this.palettes)[0];

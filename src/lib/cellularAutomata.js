@@ -1,6 +1,7 @@
 'use strict';
 
 import arraySuffle from 'array-shuffle';
+import { binaryNums } from "../utils/binaryNums";
 
 class CellularAutomata {
 	
@@ -17,12 +18,6 @@ class CellularAutomata {
 		this.canvas = opts.canvas;
 
 		this.max = opts.max;
-		
-		if(this.max > 10)
-		{
-			this.canvas.newHeight = 60 * this.max / 3;
-			this.canvas.newWidth = 45 * this.max / 3;
-		}
 
 		this.palettes = opts.palettes;
 		this.w = this.max;
@@ -35,7 +30,8 @@ class CellularAutomata {
 		this.cells[this.cells.length/2] = 1;
 
 		this.generation = 0;
-		this.ruleset = [1, 1, 1, 1, 1, 1, 1, 1];
+		console.log("instance rule is ", opts.rule)
+		this.ruleset = opts.rule || [1,1,1,1,1,1,1,1];
 	}
 
 	//// Implementing the Wolfram rules
@@ -100,13 +96,13 @@ class CellularAutomata {
 		}
 
 		ctx.save();
-		const txt = `#${this.ruleset.join()}`;
+		const txt = `#${this.ruleset.join('')}`;
 		ctx.font = '16px Courier';
 		const txtWidth = ctx.measureText(txt).width;
 		const txtHeight = parseInt(ctx.font);
 
 		// draw bg
-		ctx.fillStyle = palette[0];
+		//ctx.fillStyle = palette[0];
 		ctx.fillRect(5, (this.canvas.canvasHeight - txtHeight - 10), 
 					txtWidth + 10, txtHeight + 2);
 		
