@@ -37,6 +37,7 @@ class PaletteMap {
 		ctx.fillStyle = 'white';
 		ctx.fillRect(0, 0, this.canvas.canvasWidth, this.canvas.canvasHeight);
 
+	
 		this.palettes.forEach((palette, i) => 
 		{
 			const col = Math.floor(i % this.cols);
@@ -61,6 +62,7 @@ class PaletteMap {
 
 			ctx.restore();
 		});
+		
 	}
 }
 

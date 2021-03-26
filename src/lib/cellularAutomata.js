@@ -2,19 +2,19 @@
 
 import arraySuffle from 'array-shuffle';
 import { binaryNums } from "../utils/binaryNums";
+import Canvas from "./canvas";
 
 class CellularAutomata {
 	
 	constructor(options)
 	{
-
 		const opts = options || {};
 
 		if(typeof opts.canvas === "undefined")
 			throw new Error("CanvasNotDefined");
 		if(typeof opts.palettes === "undefined")
 			throw new Error("PalettesNotDefined");
-		
+
 		this.canvas = opts.canvas;
 
 		this.max = opts.max;
@@ -30,12 +30,13 @@ class CellularAutomata {
 		this.cells[this.cells.length/2] = 1;
 
 		this.generation = 0;
-		console.log("instance rule is ", opts.rule)
-		this.ruleset = opts.rule || [1,1,1,1,1,1,1,1];
+
+		//this.ruleset = opts.rule || [0,0,0,0,0,0,0,0];
 	}
 
 	//// Implementing the Wolfram rules
 	rules(a, b, c) {
+
 		if (a == 1 && b == 1 && c == 1) return this.ruleset[0];
 		if (a == 1 && b == 1 && c == 0) return this.ruleset[1];
 		if (a == 1 && b == 0 && c == 1) return this.ruleset[2];
@@ -44,6 +45,7 @@ class CellularAutomata {
 		if (a == 0 && b == 1 && c == 0) return this.ruleset[5];
 		if (a == 0 && b == 0 && c == 1) return this.ruleset[6];
 		if (a == 0 && b == 0 && c == 0) return this.ruleset[7];
+
 		return 0;
 	}
 	
@@ -66,15 +68,31 @@ class CellularAutomata {
 		this.generation++;
 
 		// need this here to fill the whole area
-		this.draw();
+		this.draw(this.ruleset);
 	}
 
-	draw()
+	reset()
 	{
-		
+		for (let i = 0; i < this.cells.length; i++) {
+    		this.cells[i] = 0;
+		}
+
+		this.cells[this.cells.length/2] = 1;
+
+		this.generation = 0;
+	}
+
+	draw(rule)
+	{
+		this.ruleset = rule;
+
+		this.canvas.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
 		const ctx = this.canvas.context;
+
 		const palette = arraySuffle(this.palettes)[0];
+
+			//ctx.save();
 
 		for (let i = 0; i < this.cells.length; i++) {
 		
@@ -95,10 +113,14 @@ class CellularAutomata {
 			this.generate();
 		}
 
-		ctx.save();
+		//ctx.save();
+
 		const txt = `#${this.ruleset.join('')}`;
+
 		ctx.font = '16px Courier';
+
 		const txtWidth = ctx.measureText(txt).width;
+
 		const txtHeight = parseInt(ctx.font);
 
 		// draw bg
@@ -107,14 +129,14 @@ class CellularAutomata {
 					txtWidth + 10, txtHeight + 2);
 		
 		ctx.fillStyle = palette[1];
-		ctx.textBaseline = 'top';
-		ctx.fillText(txt, 10, this.canvas.canvasHeight - (1.5 * txtHeight));
-		ctx.restore();
-		
-		
-	}
-
 	
+		ctx.textBaseline = 'top';
+		
+		ctx.fillText(txt, 10, this.canvas.canvasHeight - (1.5 * txtHeight));
+		
+		ctx.restore();
+
+	}
 
 }
 

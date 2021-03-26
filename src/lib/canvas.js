@@ -30,6 +30,11 @@ class Canvas {
 		this.domElement.setAttribute('height', newHeight);
 	}
 
+	unmount()
+	{
+		this.domElement.setAttribute('width', this.context.canvas.width);
+	}
+
 }
 
 export default Canvas;

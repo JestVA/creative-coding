@@ -59,6 +59,7 @@ class RandomLines {
 
 	draw(seed)
 	{
+		console.log("Drawing again..")
 		if(typeof seed === "undefined")
 			seed = Math.floor(Math.random() * Math.pow(2, 20));
 		
