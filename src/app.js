@@ -60,15 +60,15 @@ async function genEntireRuleset()
 
 			await new Promise(res => setTimeout(() => res(true), 4000));
 	
-			//const exportLink = document.getElementById("export");
+			const exportLink = document.getElementById("export");
 	
-			//exportLink.setAttribute("download", `it-${rule}.png`);
+			exportLink.setAttribute("download", `it-${rule}.png`);
 	
-			//const save = document.getElementById('generative')
+			const save = document.getElementById('generative')
 	
-			//exportLink.setAttribute('href', save.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+			exportLink.setAttribute('href', save.toDataURL("image/png").replace("image/png", "image/octet-stream"));
 	
-			//exportLink.click();
+			exportLink.click();
 
 
 	}
