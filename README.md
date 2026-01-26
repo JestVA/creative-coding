@@ -3,7 +3,7 @@
 ### https://twitter.com/COERCITON
 ### https://www.instagram.com/devfrend/
 
-Explorations of the soul through Javascript
+Generative art explorations using Canvas and Javascript
 
 ![](./github-gallery/palette.png)
 ### Line study with seeded simplex noise
